@@ -11,6 +11,7 @@ import com.opensymphony.xwork2.ActionContext;
 @Controller
 @Scope("prototype")
 public class ForumManageAction extends ModelDrivenBaseAction<Forum>{
+	
 	public String list(){
 		List<Forum> forumlist=forumService.findAll();
 		ActionContext.getContext().put("forumlist", forumlist);

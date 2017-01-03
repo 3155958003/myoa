@@ -16,23 +16,52 @@ import com.opensymphony.xwork2.ActionContext;
 
 @Controller
 @Scope("prototype")
+
+/**
+ * 模板申请的action类
+ * @author Administrator
+ *
+ */
 public class ApplicationTemplateAction extends ModelDrivenBaseAction<ApplicationTemplate>{
+	
 	private File upload; //上传
 	private FileInputStream inputStream;//下载
+	
+	/**
+	 * 显示所有的申请模板
+	 * @return
+	 */
 	public String list(){
 		List<ApplicationTemplate> appList= applicationTemplateService.findAll();
 		ActionContext.getContext().put("applicationTemplateList",appList);
 		return "list";
 	}
+	
+	/**
+	 * 删除模板 并返回到页面
+	 * @return
+	 * @throws UnsupportedEncodingException
+	 */
 	public String delete() throws UnsupportedEncodingException{
 		applicationTemplateService.delete(model.getId());
 		return "tolist";
 	}
+	
+	/**
+	 * 去到添加申请的页面
+	 * @return
+	 */
 	public String addUI(){
 		List<ProcessDefinition> processDefinitionList=processDefinitionService.findAllLatestVersions();
 		ActionContext.getContext().put("processDefinitionList",processDefinitionList);
 		return "addUI";
 	}
+	
+	/**
+	 * 添加申请
+	 * @return
+	 * @throws Exception
+	 */
 	public String add() throws Exception{
 		//封装
 		String path=saveUploadFile(upload);
@@ -41,6 +70,11 @@ public class ApplicationTemplateAction extends ModelDrivenBaseAction<Application
 		applicationTemplateService.save(model);
 		return "tolist";
 	}
+	
+	/**
+	 * 去到修改申请的页面
+	 * @return
+	 */
 	public String editUI(){
 		List<ProcessDefinition> processDefinitionList = processDefinitionService.findAllLatestVersions();
 		ActionContext.getContext().put("processDefinitionList", processDefinitionList);
@@ -48,6 +82,11 @@ public class ApplicationTemplateAction extends ModelDrivenBaseAction<Application
 		ActionContext.getContext().getValueStack().push(applicationTemplate);
 		return "addUI";
 	}
+	
+	/**
+	 * 修改申请
+	 * @return
+	 */
 	public String edit(){
 		//从DB中取出原对象
 		ApplicationTemplate applicationTemplate=applicationTemplateService.findById(model.getId());
@@ -68,6 +107,13 @@ public class ApplicationTemplateAction extends ModelDrivenBaseAction<Application
 		applicationTemplateService.update(applicationTemplate);
 		return "tolist";
 	}
+	
+	/**
+	 *下载申请模板
+	 * @return
+	 * @throws FileNotFoundException
+	 * @throws UnsupportedEncodingException
+	 */
 	public String download() throws FileNotFoundException, UnsupportedEncodingException{
 		//获取要下载的文件
 		ApplicationTemplate applicationTemplate=applicationTemplateService.findById(model.getId());
@@ -78,6 +124,7 @@ public class ApplicationTemplateAction extends ModelDrivenBaseAction<Application
 		//下载
 		return "download";
 	}
+	
 	public File getUpload() {
 		return upload;
 	}
