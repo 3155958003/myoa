@@ -34,7 +34,7 @@ public interface ApplicationService extends BaseDao<Application> {
 	 * @return
 	 */
 	List<TaskView> getMyTaskViewList(User currentUser);
-
+	
 	void approval(ApproveInfo approveInfo,String taskId, String outcome);
 
 	Set<String> getComes(String taskId);

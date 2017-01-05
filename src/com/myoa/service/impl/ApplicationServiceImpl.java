@@ -77,12 +77,13 @@ public class ApplicationServiceImpl extends BaseDaoImpl<Application> implements 
 	public void approval(ApproveInfo approveInfo,String taskId,String outcome) {
 		getSession().save(approveInfo);
 		Task task=processEngine.getTaskService().getTask(taskId);
+		
 		if(outcome==null){
 			processEngine.getTaskService().completeTask(taskId);
-		}
-		else{
+		}else{
 			processEngine.getTaskService().completeTask(taskId,outcome);
 		}
+		
 		//维护审批状态
 		Application application=approveInfo.getApplication();
 		ProcessInstance pi=processEngine.getExecutionService().findProcessInstanceById(task.getExecutionId());
@@ -91,8 +92,7 @@ public class ApplicationServiceImpl extends BaseDaoImpl<Application> implements 
 				processEngine.getExecutionService().endProcessInstance(pi.getId(),ProcessInstance.STATE_ENDED);
 			}
 			application.setStatus(Application.STATUS_REJECTED);
-		}
-		else{
+		}else{
 			if(pi==null){
 			    application.setStatus(Application.STATUS_APPROVED);
 			}

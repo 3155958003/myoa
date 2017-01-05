@@ -69,7 +69,7 @@ public class ProcessDefinitionServiceImpl implements ProcessDefinitionService {
 		// TODO Auto-generated method stub
 		processEngine.getRepositoryService()
 		.createDeployment()
-		.addResourcesFromZipInputStream(zipInputStream)
+		.addResourcesFromZipInputStream(zipInputStream) 
 		.deploy();
 	}
 

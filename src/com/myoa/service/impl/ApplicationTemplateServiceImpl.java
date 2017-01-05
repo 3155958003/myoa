@@ -14,6 +14,7 @@ import com.myoa.service.ApplicationTemplateService;
  */
 @Service
 public class ApplicationTemplateServiceImpl extends BaseDaoImpl<ApplicationTemplate> implements ApplicationTemplateService{
+	
 	@Override
 	public void delete(Long id) {
 		//删除数据库记录

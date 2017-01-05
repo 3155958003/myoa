@@ -34,6 +34,7 @@
 	<mapping resource="jbpm.task.hbm.xml" />
 	<mapping resource="jbpm.identity.hbm.xml" />
 	
+	<!--导入审批流转的实体隐射文件-->
 	<mapping resource="com/myoa/domain/ApplicationTemplate.hbm.xml" />
 	<mapping resource="com/myoa/domain/Application.hbm.xml" />
 	<mapping resource="com/myoa/domain/ApproveInfo.hbm.xml" />
