@@ -4,6 +4,8 @@
     <title>审批流程列表</title>
     <%@ include file="/WEB-INF/jsp/public/common.jspf" %>
     <script type="text/javascript">
+    	
+    	/* 在网页中打开一个窗口来查看流程图 */
 	    function showProcessImage( pdId ){
 	    	// alert("原文：" + pdId);
 	    	
