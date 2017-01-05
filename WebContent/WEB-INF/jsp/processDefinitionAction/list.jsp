@@ -16,7 +16,9 @@
 	    	// alert("第二次URL编码：" + pdId);
 	    	
             var url = "processDefinitionAction_downloadProcessImage.action?id=" + pdId + "&t=" + new Date();
-            window.showModalDialog(url, null, "dialogHeight:500px;dialogWidth:600px;resizable:yes");
+            /*  window.showModalDialog(url, null, "dialogHeight:500px;dialogWidth:600px;resizable:yes"); */ 
+            /* window.showModalDialog(url, 300,200); */
+            window.open(url,300,200) ;  
         }
     </script> 
 </head>

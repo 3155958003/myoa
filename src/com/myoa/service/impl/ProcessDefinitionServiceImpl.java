@@ -53,7 +53,7 @@ public class ProcessDefinitionServiceImpl implements ProcessDefinitionService {
 	 */
 	public void deleteByKey(String key) {
 		// TODO Auto-generated method stub
-	List<ProcessDefinition> list=processEngine.getRepositoryService().createProcessDefinitionQuery()
+		List<ProcessDefinition> list=processEngine.getRepositoryService().createProcessDefinitionQuery()
 		.processDefinitionKey(key)
 		.list();
 	
@@ -81,7 +81,7 @@ public class ProcessDefinitionServiceImpl implements ProcessDefinitionService {
 		ProcessDefinition pd=processEngine.getRepositoryService()
 		.createProcessDefinitionQuery()
 		.processDefinitionId(id)
-		.uniqueResult();
+		.uniqueResult();	
 		return processEngine.getRepositoryService().getResourceAsStream(pd.getDeploymentId(),pd.getImageResourceName());
 	}
 
