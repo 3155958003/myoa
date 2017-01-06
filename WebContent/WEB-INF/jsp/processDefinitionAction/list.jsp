@@ -16,8 +16,10 @@
 	    	// alert("第二次URL编码：" + pdId);
 	    	
             var url = "processDefinitionAction_downloadProcessImage.action?id=" + pdId + "&t=" + new Date();
+            /*在谷歌中不适用，在火狐中是适用的  window.showModalDialog()*/
             /*  window.showModalDialog(url, null, "dialogHeight:500px;dialogWidth:600px;resizable:yes"); */ 
             /* window.showModalDialog(url, 300,200); */
+           /*在谷歌和火狐中都适用   window.open() */
             window.open(url,300,200) ;  
         }
     </script> 
