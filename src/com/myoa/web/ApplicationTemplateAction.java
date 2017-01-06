@@ -32,6 +32,8 @@ public class ApplicationTemplateAction extends ModelDrivenBaseAction<Application
 	 * @return
 	 */
 	public String list(){
+		//准备数据   ----->查询所有的模板信息
+		//显示在页面
 		List<ApplicationTemplate> appList= applicationTemplateService.findAll();
 		ActionContext.getContext().put("applicationTemplateList",appList);
 		return "list";
@@ -52,6 +54,8 @@ public class ApplicationTemplateAction extends ModelDrivenBaseAction<Application
 	 * @return
 	 */
 	public String addUI(){
+		//准备数据   ----->  所有的部署流程信息
+		//并显示在页面
 		List<ProcessDefinition> processDefinitionList=processDefinitionService.findAllLatestVersions();
 		ActionContext.getContext().put("processDefinitionList",processDefinitionList);
 		return "addUI";
